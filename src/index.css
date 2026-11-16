@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+:root {
+  --hq-forest: #315C4C;
+  --hq-forest-deep: #244639;
+  --hq-forest-elevated: #3D6E5C;
+  --hq-canvas: #E8DFC9;
+  --hq-surface: #F8F5EC;
+  --hq-surface-soft: #EFE8D6;
+  --hq-support: #A9C5AD;
+  --hq-leather: #795A40;
+  --hq-gold: #E7B94F;
+  --hq-gold-bright: #F2CE74;
+  --hq-ink: #1F362D;
+  --hq-ink-muted: #4A6358;
+  --hq-ivory: #F8F5EC;
+  --hq-terracotta: #C2593F;
+}
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--hq-ink);
+    background-color: var(--hq-canvas);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    text-wrap: balance;
+  }
+
+  .font-mono-tabular {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Classic Detective Academy Canvas: Warm Soft Beige (#E8DFC9) + Subtle Pastel Sage & Mustard Glow + Technical Grid */
+.paper-canvas {
+  background-color: var(--hq-canvas);
+  background-image:
+    radial-gradient(ellipse 75% 55% at 14% 8%, rgba(231, 185, 79, 0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 65% 50% at 88% 85%, rgba(169, 197, 173, 0.24) 0%, transparent 62%),
+    linear-gradient(to right, rgba(49, 92, 76, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(49, 92, 76, 0.055) 1px, transparent 1px),
+    radial-gradient(rgba(121, 90, 64, 0.06) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 24px 24px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 12px 12px;
+}
+
+.dossier-surface {
+  background-color: var(--hq-surface);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(248, 245, 236, 0.9),
+    rgba(239, 232, 214, 0.85)
+  );
+}
+
+.blueprint-grid-bg {
+  background-color: #315C4C;
+  background-image:
+    linear-gradient(to right, rgba(231, 185, 79, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(231, 185, 79, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Detective hotspot pulse ring for Stage 3 visual highlight */
+@keyframes clueBeacon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.16);
+    opacity: 0.45;
+  }
+}
+
+.clue-beacon-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: clueBeacon 1.6s ease-in-out infinite;
+}
+
+/* Cinematic & Interactive Transitions (compositor-only: transform & opacity) */
+@keyframes introFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kenBurnsSlow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes floatMote {
+  0%, 100% {
+    opacity: 0.15;
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+  50% {
+    opacity: 0.72;
+    transform: translate3d(12px, -22px, 0) scale(1.15);
+  }
+}
+
+@keyframes mistDrift {
+  0%, 100% {
+    transform: translate3d(-2%, 0, 0);
+  }
+  50% {
+    transform: translate3d(2%, -1%, 0);
+  }
+}
+
+@keyframes dossierUnfold {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes insigniaSelect {
+  0% {
+    transform: scale(0.97);
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.intro-stage-1 {
+  animation: introFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+.intro-stage-2 {
+  animation: introFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+}
+.intro-stage-3 {
+  animation: introFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+.intro-stage-4 {
+  animation: introFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+}
+.ken-burns-slow {
+  animation: kenBurnsSlow 26s ease-in-out infinite;
+}
+.mist-drift {
+  animation: mistDrift 18s ease-in-out infinite;
+}
+.float-mote {
+  animation: floatMote var(--mote-dur, 7s) ease-in-out var(--mote-delay, 0s) infinite;
+}
+.dossier-unfold {
+  animation: dossierUnfold 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.insignia-pop {
+  animation: insigniaSelect 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles for Kad Identiti Rasmi & Laporan Sekolah Impian */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only-full {
+    box-shadow: none !important;
+    border: 1.5px solid #172B25 !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+}
